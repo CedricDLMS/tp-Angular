@@ -1,5 +1,8 @@
-<ul style="display: flex;">
-    @for (item of Columns(); track item.id) {
-        <li>{{item.title}}</li>
-    }
-</ul>
+<div>
+    <ul style="display: flex;">
+        @for (item of Columns(); track item.id) {
+            <h4>{{item.title}}</h4>
+            <app-cards [columnId]="item.id"></app-cards>
+        }
+    </ul>
+</div>

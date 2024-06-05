@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, input, signal } from '@angular/core';
 import CardService from './services/cards.service';
+import Card from './model/card.model';
 
 @Component({
   selector: 'app-cards',
@@ -10,11 +11,22 @@ import CardService from './services/cards.service';
   providers : [CardService]
 })
 export class CardsComponent implements OnInit {
-  Cards = this.CardService.Cards;
+  Cards = signal<Card[]>([]);
+
+  @Input() columnId! : string;
 
   constructor(private CardService : CardService){}
-  
+
   ngOnInit(): void {
-    this.CardService.getCards().subscribe
+    if(this.columnId){
+      this.CardService.getCards().subscribe(cards => {
+        const id = this.columnId;
+        const filteredCards = cards.filter(card => card.column === id);
+        console.log(filteredCards);
+        this.Cards.set(filteredCards);
+      });
+    }else{
+      console.error("pas de carte avec cet Id : ", this.columnId)
+    }
   }
 }

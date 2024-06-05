@@ -1,7 +1,7 @@
 export default interface Card{
-    id : number;
+    id : string;
     question : string;
     answer : string;
-    columnId : number;
-    termId : number;
+    column : string;
+    termId : string;
 }

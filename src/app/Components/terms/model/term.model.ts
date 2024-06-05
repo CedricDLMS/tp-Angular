@@ -1,4 +1,4 @@
 export default interface Term{
-    id : number;
+    id : string;
     title : string;
 }
