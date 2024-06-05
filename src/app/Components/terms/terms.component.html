@@ -1,6 +1,6 @@
 <ul class="navBar" style="display: flex;">
     @for (item of Terms(); track item.id) {
-        <p class="navElement">{{item.title}}</p>
+        <p class="navElement"><a id="button{{item.id}}" (click)="handleClickTerm(item.id)">{{item.title}}</a></p>
     }
 </ul>
 

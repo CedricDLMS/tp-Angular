@@ -1,6 +1,8 @@
-import { Component, Input, OnInit, input, signal } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, input, signal } from '@angular/core';
 import CardService from './services/cards.service';
 import Card from './model/card.model';
+import { TermEventService } from '../../services/events/term-event.service';
+
 
 @Component({
   selector: 'app-cards',
@@ -8,25 +10,37 @@ import Card from './model/card.model';
   imports: [],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css',
-  providers : [CardService]
+  providers : [CardService, TermEventService]
 })
 export class CardsComponent implements OnInit {
-  Cards = signal<Card[]>([]);
+  Cards! : Card[];
 
   @Input() columnId! : string;
 
-  constructor(private CardService : CardService){}
-
+  constructor(private CardService : CardService, private termEventService : TermEventService){}
+  
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if(changes.TermsId){
+      
+  //   }
+  // }
   ngOnInit(): void {
-    if(this.columnId){
+    
       this.CardService.getCards().subscribe(cards => {
-        const id = this.columnId;
-        const filteredCards = cards.filter(card => card.column === id);
+        // const id = this.columnId;
+        const filteredCards = cards.filter(card => card.column === this.columnId);
         console.log(filteredCards);
-        this.Cards.set(filteredCards);
+        this.Cards = filteredCards;
       });
-    }else{
-      console.error("pas de carte avec cet Id : ", this.columnId)
-    }
+
+    this.termEventService.event$.subscribe({
+      next : (termId)=> {
+        console.log('card');
+        this.Cards = this.Cards.filter(card => {
+          return card.termId === termId;
+        })
+      }
+    })
   }
+  
 }

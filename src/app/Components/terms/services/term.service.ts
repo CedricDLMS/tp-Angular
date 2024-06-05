@@ -18,4 +18,5 @@ export default class TermService{
             tap(Term => this.Terms.set(Term))
           );
     }
+
 }
