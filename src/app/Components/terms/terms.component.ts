@@ -7,7 +7,7 @@ import Term from './model/term.model';
 @Component({
   selector: 'app-terms',
   standalone: true,
-  imports: [CommonModule,HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './terms.component.html',
   styleUrl: './terms.component.css',
   providers : [TermService]
