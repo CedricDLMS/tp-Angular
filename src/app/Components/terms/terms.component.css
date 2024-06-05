@@ -1,0 +1,14 @@
+.navBar{
+    gap: 10%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+p{
+    background-color: gray;
+    border-radius: 5px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}

@@ -1,8 +1,9 @@
-<div>
-    <ul style="display: flex;">
-        @for (item of Columns(); track item.id) {
-            <h4>{{item.title}}</h4>
-            <app-cards [columnId]="item.id"></app-cards>
-        }
-    </ul>
-</div>
+<ul style="display: flex;">
+    @for (item of Columns(); track item.id) {
+        <div style="display: flex; flex-direction: column;">
+        <h4>{{item.title}}</h4>
+            <app-cards class="app-cards" ngClass="Cards" [columnId]="item.id"></app-cards>
+        </div>
+    }
+</ul>
+

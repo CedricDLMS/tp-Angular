@@ -1,0 +1,11 @@
+div{
+    flex:1;
+}
+ul{
+    padding-left: 0;
+    padding: 0;
+}
+
+.app-cards{
+    background-color: aqua;
+}
