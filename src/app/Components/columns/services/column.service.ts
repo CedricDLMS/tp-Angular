@@ -13,7 +13,7 @@ export default class ColumnService{
     readonly url = "http://localhost:3000/columns";
 
 
-    getTerms() : Observable<Column[]>{
+    getColumns() : Observable<Column[]>{
         return this.http.get<Column[]>(this.url).pipe(
             tap(column => this.Columns.set(column))
           );

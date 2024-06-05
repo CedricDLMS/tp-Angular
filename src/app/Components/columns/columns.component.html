@@ -1,1 +1,5 @@
-<p>columns works!</p>
+<ul style="display: flex;">
+    @for (item of Columns(); track item.id) {
+        <li>{{item.title}}</li>
+    }
+</ul>

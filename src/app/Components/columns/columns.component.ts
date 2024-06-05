@@ -18,7 +18,7 @@ export class ColumnsComponent implements OnInit {
   constructor(private ColumnService : ColumnService){}
   
   ngOnInit(): void {
-    this.ColumnService.getTerms().subscribe( column => {
+    this.ColumnService.getColumns().subscribe( column => {
       this.Columns.set(column);
     });
   }

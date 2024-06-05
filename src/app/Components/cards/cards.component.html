@@ -1,1 +1,5 @@
-<p>cards works!</p>
+<ul>
+    @for (item of Cards(); track item.id) {
+        <li> {{item.question}}</li>
+    }
+</ul>
